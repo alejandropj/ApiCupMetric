@@ -37,6 +37,7 @@ namespace ApiCupMetric.Repositories
         }
         public async Task CreateIngredienteAsync(Ingrediente ingrediente)
         {
+            ingrediente.IdIngrediente = 0;
             this.context.Ingredientes.Add(ingrediente);
             this.context.SaveChanges();
         }

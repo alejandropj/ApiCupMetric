@@ -15,9 +15,10 @@ namespace ApiCupMetric.Controllers
     {
         private RepositoryUsers repo;
         private HelperActionOAuth helper;
-        public AuthController(RepositoryUsers repo)
+        public AuthController(RepositoryUsers repo, HelperActionOAuth helper)
         {
             this.repo = repo;
+            this.helper = helper;
         }
 
         [HttpPost]
