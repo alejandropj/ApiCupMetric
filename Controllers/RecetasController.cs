@@ -20,6 +20,26 @@ namespace ApiCupMetric.Controllers
             GetRecetas()
         {
             return await this.repo.GetRecetasAsync();
+        }        
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ActionResult<List<RecetaIngredienteValoracion>>>
+            RecetasFormatted()
+        {
+            return await this.repo.GetRecetasFormattedAsync();
+        }           
+        [HttpGet("[action]/{idcategoria}")]
+        public async Task<ActionResult<List<RecetaIngredienteValoracion>>>
+            FilterReceta(int idcategoria)
+        {
+            return await this.repo.FilterRecetaByCategoriaAsync(idcategoria);
+        }        
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ActionResult<List<Categoria>>>
+            Categorias()
+        {
+            return await this.repo.GetCategoriasAsync();
         }
         [Route("[action]")]
         [HttpGet]
@@ -33,6 +53,12 @@ namespace ApiCupMetric.Controllers
             FindReceta(int id)
         {
             return await this.repo.FindRecetaByIdAsync(id);
+        }        
+        [HttpGet("[action]/{id}")]
+        public async Task<ActionResult<RecetaIngredienteValoracion>>
+            RecetaFormatted(int id)
+        {
+            return await this.repo.FindRecetaFormattedAsync(id);
         }
         [HttpPost]
         public async Task<ActionResult>
@@ -41,12 +67,27 @@ namespace ApiCupMetric.Controllers
             await this.repo.CreateRecetaAsync(recetaIngredientes.Receta
                 ,recetaIngredientes.IdIngredientes,recetaIngredientes.Cantidad);
             return Ok();
+        }        
+        [HttpPost("[action]")]
+        public async Task<ActionResult>
+            Valoracion(Valoracion valoracion)
+        {
+            await this.repo.PostValoracionAsync(valoracion.IdReceta,
+                valoracion.IdUsuario, valoracion.NumValoracion);
+            return Ok();
         }
         [HttpPut]
         public async Task<ActionResult>
             UpdateIngrediente(Receta receta)
         {
             await this.repo.UpdateRecetaAsync(receta);
+            return Ok();
+        }        
+        [HttpPut("[action]/{idreceta}")]
+        public async Task<ActionResult>
+            AddVisit(int idreceta)
+        {
+            await this.repo.AddVisitRecetaAsync(idreceta);
             return Ok();
         }
         [HttpDelete("{idreceta}")]
