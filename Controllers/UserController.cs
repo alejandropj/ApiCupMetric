@@ -34,6 +34,12 @@ namespace ApiCupMetric.Controllers
         {
             return await this.repo.FindUserByIdAsync(id);
         }
+/*        [HttpGet("[action]")]
+        public async Task<ActionResult<User>>
+            LoginUser(LoginModel login)
+        {
+            return await this.repo.LoginUserAsync(login.Email, login.Password);
+        }*/
         [HttpPost]
         public async Task<ActionResult>
             RegisterUser(UserReg user)

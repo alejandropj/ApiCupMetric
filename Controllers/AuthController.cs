@@ -1,6 +1,7 @@
 ﻿using ApiCupMetric.Helpers;
 using ApiCupMetric.Models;
 using ApiCupMetric.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -51,7 +52,8 @@ namespace ApiCupMetric.Controllers
                     );
                 return Ok(new
                 {
-                    response = new JwtSecurityTokenHandler().WriteToken(token)
+                    response = new JwtSecurityTokenHandler().WriteToken(token),
+                    user = usuario
                 });
             }
         }
