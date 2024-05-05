@@ -10,11 +10,11 @@ namespace ApiCupMetric.Helpers
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public string SecretKey { get; set; }
-        public HelperActionOAuth(IConfiguration configuration)
+        public HelperActionOAuth(string secretKey, string audience, string issuer)
         {
-            this.Issuer = configuration.GetValue<string>("ApiOAuth:Issuer");
-            this.Audience = configuration.GetValue<string>("ApiOAuth:Audience");
-            this.SecretKey = configuration.GetValue<string>("ApiOAuth:SecretKey");
+            this.Issuer = issuer;
+            this.Audience = audience;
+            this.SecretKey = secretKey;
         }
 
         public SymmetricSecurityKey GetKeyToken()

@@ -1,6 +1,5 @@
 ﻿using ApiCupMetric.Data;
 using ApiCupMetric.Models;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiCupMetric.Repositories

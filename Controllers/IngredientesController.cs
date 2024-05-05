@@ -1,6 +1,5 @@
 ﻿using ApiCupMetric.Models;
 using ApiCupMetric.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCupMetric.Controllers

@@ -27,9 +27,8 @@ namespace ApiCupMetric.Repositories
         private SqlDataReader reader;
 
         private CupMetricContext context;
-        public RepositoryReceta(CupMetricContext context)
+        public RepositoryReceta(CupMetricContext context,string connectionString)
         {
-            string connectionString = @"Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=CUPMETRIC;Persist Security Info=True;User ID=sa;Password=MCSD2023;Trust Server Certificate=true";
             this.cn = new SqlConnection(connectionString);
             this.com = new SqlCommand();
             this.com.Connection = this.cn;
